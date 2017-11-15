@@ -1,2 +1,3 @@
 controller\FamilyController.class
 controller\DESTNSelector.class
+pojo\User.class

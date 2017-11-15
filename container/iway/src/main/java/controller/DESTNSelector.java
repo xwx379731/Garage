@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/dest")
 public class DESTNSelector {
 
-    @RequestMapping(value = "/axis",method = RequestMethod.GET)
+    @RequestMapping(value = "/",method = RequestMethod.GET)
     public String toIndex()
     {
         /**
          *
          */
-        return "axis";
+        return null;
     }
 }
