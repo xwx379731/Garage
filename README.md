@@ -1,4 +1,4 @@
-<h1 align='center'>Garage</h1>
+<h1 align='center'>Welcome to Garage</h1>
 
 ## Goal
 Garage can create some funny things with family member.It focuses on the newest movement about science,mathematics,tourism and IT.
@@ -22,3 +22,6 @@ Garage can create some funny things with family member.It focuses on the newest 
 [StackOverFlow]: https://stackoverflow.com/
 [Git]: https://git-scm.com/
 [GitHub]: https://github.com/
+
+## License
+Copyright (c) 2017-present,July 
