@@ -13,6 +13,7 @@ Garage can create some funny things with family member.It focuses on the newest 
 |  [StackOverFlow] | help online| Where help,share,build |
 |  [Git] | improving | Version control system |
 |  [GitHub] | using | Code host platform |
+| [MDN] |  help online | web materail |
 
 
 [SpringMVC]: http://spring.io/
@@ -22,6 +23,16 @@ Garage can create some funny things with family member.It focuses on the newest 
 [StackOverFlow]: https://stackoverflow.com/
 [Git]: https://git-scm.com/
 [GitHub]: https://github.com/
+[MDN]: https://developer.mozilla.org/en-US/
+
+## Work
+* Business architecture
+  > to understand the structure and be familiar to the flow
+
+* Project Management 
+  > team structure organization communicattion
+
+## Family
 
 ## License
 Copyright (c) 2017-present,July 
