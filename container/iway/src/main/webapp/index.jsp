@@ -6,6 +6,8 @@
      <link  href="css/frameworks.css" media="all" rel="stylesheet">
     <link  href="css/github.css"  media="all" rel="stylesheet">
     <link href="css/site.css"  media="all" rel="stylesheet">
+    <script src="js/lib/jquery-3.2.1.js"></script>
+    <script src="js/lib/vue.js"></script>
     <title>The personal software development platform iSource</title>
     </head>
 
@@ -102,7 +104,7 @@
                     </p>
                 </div>
                 <div class="mx-auto col-sm-8 col-md-5 hide-sm">
-                    <div class="rounded-1 text-gray bg-gray-light py-4 px-4 px-md-3 px-lg-4">
+                    <div id="form" class="rounded-1 text-gray bg-gray-light py-4 px-4 px-md-3 px-lg-4">
                         <form accept-charset="UTF-8" action="/family/join" autocomplete="off" class="home-hero-signup js-signup-form" method="post">
                             <div style="margin:0;padding:0;display:inline">
                                 <input name="utf8" type="hidden" value="UTF-8">
@@ -113,7 +115,7 @@
                             <label class="form-label f5" for="user[login]">Username</label>
                         </dt>
                         <dd>
-                            <input type="text" name="login" id="user[login]" class="form-control form-control-lg input-block" placeholder="Pick a username" data-autocheck-url="/signup_check/username" data-autocheck-authenticity-token="cS+H/B0sTfCdZEogvDJWfD56ABuDXp7GrtZkfNKTkQ08LQsPs+xtAcHKfEl0ltx+4GSuyBnSAIKw0XcDXmWorA==" autofocus="">
+                            <input type="text" v-model="user.username" name="login" id="user[login]" class="form-control form-control-lg input-block" placeholder="Pick a username" data-autocheck-url="/signup_check/username" data-autocheck-authenticity-token="cS+H/B0sTfCdZEogvDJWfD56ABuDXp7GrtZkfNKTkQ08LQsPs+xtAcHKfEl0ltx+4GSuyBnSAIKw0XcDXmWorA==" autofocus="">
                         </dd>
                     </dl>
                         <dl class="form-group" style="display: none">
@@ -129,7 +131,7 @@
                                 <label class="form-label f5" for="user[password]">Password</label>
                             </dt>
                             <dd>
-                                <input type="password" name="password" id="user[password]" class="form-control form-control-lg input-block" placeholder="Create a password" data-autocheck-url="/signup_check/password" data-autocheck-authenticity-token="XdFAgC0HBv80v20oSO8e/TZtIOv/Av6luYOTmLILo+0m90gOG6cRHZUT6uEobKRUHWZCFxTDuLl2mA4/+5SJpQ==">
+                                <input type="password" v-model="user.password" name="password" id="user[password]" class="form-control form-control-lg input-block" placeholder="Create a password" data-autocheck-url="/signup_check/password" data-autocheck-authenticity-token="XdFAgC0HBv80v20oSO8e/TZtIOv/Av6luYOTmLILo+0m90gOG6cRHZUT6uEobKRUHWZCFxTDuLl2mA4/+5SJpQ==">
                             </dd>
                             <p class="form-control-note">Use at least one letter, one numeral, and seven characters.</p>
                         </dl>
@@ -138,15 +140,16 @@
                         <input class="form-control" name="timestamp" type="hidden" value="">
                         <input class="form-control" name="timestamp_secret" type="hidden" value="">
 
-                        <button class="btn btn-primary btn-large f4 btn-block" type="submit" data-ga-click="Signup, Attempt, location:teams;">Sign in for Family</button>
+                        <button @click.submit.prevent="sign" class="btn btn-primary btn-large f4 btn-block" type="submit" data-ga-click="Signup, Attempt, location:teams;">Sign up for Family</button>
                         <p class="form-control-note mb-0 text-center">
                             By clicking "Sign up for Family", you agree to our agreement.
                         </p>
 
-                    </form>          </div>
+                    </form>
+                    </div>
                 </div>
                 <div class="d-sm-none text-center">
-                    <a href="https://github.com/join?source=button-home" class="btn btn-primary btn-large border-0" data-ga-click="Signup, Attempt, location:jumbotron;" rel="nofollow">Sign up for GitHub</a>
+                    <a href="/family/login" class="btn btn-primary btn-large border-0" data-ga-click="Signup, Attempt, location:jumbotron;" rel="nofollow">Sign in for GitHub</a>
                 </div>
             </div>
         </div>
@@ -170,5 +173,37 @@
 
 
    </div>
-</div></body>
+</div>
+<script>
+       var user={username:"",password:""};
+       new Vue({
+        el:"#form",
+        data:{
+            user:user,
+            url:"/family/join"
+        },
+        methods:{
+            sign:function()
+            {
+                $.ajax(
+                    {
+                        type:"POST",
+                        contentType: "application/json;charset=UTF-8",
+                        dataType:"json",
+                        data:JSON.stringify(this.user),
+                        url:this.url,
+                        success:function(d)
+                        {
+
+                        },
+                        error:function (x,e) {
+                            console.log(e);
+                        }
+                    }
+                );
+            }
+        }
+    });
+</script>
+</body>
 </html>
